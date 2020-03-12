@@ -1,5 +1,6 @@
 package com.yxm.springboot.domain;
 
+import com.yxm.springboot.validate.Age;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
@@ -30,7 +31,8 @@ public class User {
     @Size(min = 3,max = 20,groups = {Save.class,Update.class})
     private String name;
 
-    @Range(min = 1,max = 120,groups = {Save.class,Update.class})
+/*    @Range(min = 1,max = 120,groups = {Save.class,Update.class})*/
+    @Age(min = 1,max = 120,groups = {Save.class,Update.class})
     private Integer age;
 
     public Long getId() {
