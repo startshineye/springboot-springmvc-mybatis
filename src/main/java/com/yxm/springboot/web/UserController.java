@@ -4,6 +4,10 @@ import com.yxm.springboot.domain.User;
 import com.yxm.springboot.service.UserService;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,8 +57,20 @@ public class UserController {
      * @param user 用户信息
      */
     @PostMapping("/")
-    public void saveUser(@RequestBody  User user) {
-        userService.saveUser(user);
+    public String saveUser(@RequestBody @Validated({User.Save.class}) User user,
+                         BindingResult bindingResult) {
+        //1.校验逻辑:如果校验失败,则将检验失败信息返回
+        if(bindingResult.hasErrors()){
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            FieldError error = (FieldError)allErrors.get(0);
+            String message = error.getObjectName() + ","
+                    + error.getField() + ","
+                    + error.getDefaultMessage();
+            return "{'status': 'error', 'message': '" + message +"'}";
+        }
+
+        //2.业务逻辑
+       return userService.saveUser(user);
     }
     /**
      * 修改用户

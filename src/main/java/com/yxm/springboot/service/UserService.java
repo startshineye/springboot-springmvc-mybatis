@@ -27,13 +27,13 @@ public interface UserService {
      * 插入用户
      * @param user
      */
-    void saveUser(User user);
+    String saveUser(User user);
 
     /**
      * 修改用户
      * @param user
      */
-    void updateUser(User user);
+    String updateUser(User user);
 
     /**
      * 删除用户
