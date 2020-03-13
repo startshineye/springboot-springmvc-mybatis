@@ -70,7 +70,8 @@ public class UserController {
         }
 
         //2.业务逻辑
-       return userService.saveUser(user);
+        userService.saveUser(user);
+        return "success";
     }
     /**
      * 修改用户

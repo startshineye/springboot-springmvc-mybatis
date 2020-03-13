@@ -1,10 +1,6 @@
 package com.yxm.springboot.service;
-
 import com.yxm.springboot.domain.User;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
-
 /**
  * 用户管理模块的service组件接口
  * @author yexinming
@@ -27,17 +23,17 @@ public interface UserService {
      * 插入用户
      * @param user
      */
-    String saveUser(User user);
+    Long saveUser(User user);
 
     /**
      * 修改用户
      * @param user
      */
-    String updateUser(User user);
+    Boolean updateUser(User user);
 
     /**
      * 删除用户
      * @param id
      */
-    void removeUser(Long id);
+    Boolean removeUser(Long id);
 }

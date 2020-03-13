@@ -2,6 +2,7 @@ package com.yxm.springboot;
 import com.yxm.springboot.config.DruidDBConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -72,9 +73,13 @@ import org.springframework.context.annotation.Import;
  * （8）controller bean处理完请求之后，spring mvc将请求结果，返回给浏览器
  *
  */
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
+/*
+ *
+ * 这个注解相当于是@Configuration+@EnableAutoConfiguration+@ComponentScan的组合
+ * 一般开发中，就是直接用一个@SpringBootApplication这个注解就可以了
+ *
+ */
+@SpringBootApplication
 /*
  * 将数据源bean的配置类，导入进来，就相当于你以前搞多个xml的时候，将多个xml导入一个总的xml中
  */

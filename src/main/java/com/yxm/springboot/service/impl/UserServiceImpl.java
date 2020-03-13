@@ -26,19 +26,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String saveUser(User user) {
-        dao.saveUser(user);
-        return "success";
+    public Long saveUser(User user) {
+       return dao.saveUser(user);
     }
 
     @Override
-    public String updateUser(User user) {
-        dao.updateUser(user);
-        return "success";
+    public Boolean updateUser(User user) {
+        return dao.updateUser(user);
     }
 
     @Override
-    public void removeUser(Long id) {
-        dao.removeUser(id);
+    public Boolean removeUser(Long id) {
+       return  dao.removeUser(id);
     }
 }

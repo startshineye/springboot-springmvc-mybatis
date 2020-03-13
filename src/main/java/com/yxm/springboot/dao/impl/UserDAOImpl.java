@@ -27,17 +27,20 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void saveUser(User user) {
+    public Long saveUser(User user) {
        mapper.saveUser(user);
+       return user.getId();
     }
 
     @Override
-    public void updateUser(User user) {
+    public Boolean updateUser(User user) {
          mapper.updateUser(user);
+         return true;
     }
 
     @Override
-    public void removeUser(Long id) {
+    public Boolean removeUser(Long id) {
            mapper.removeUser(id);
+           return true;
     }
 }

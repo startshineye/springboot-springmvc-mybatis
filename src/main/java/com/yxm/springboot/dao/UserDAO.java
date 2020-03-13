@@ -25,17 +25,17 @@ public interface UserDAO {
      * 插入用户
      * @param user
      */
-    void saveUser(User user);
+    Long saveUser(User user);
 
     /**
      * 修改用户
      * @param user
      */
-    void updateUser(User user);
+    Boolean updateUser(User user);
 
     /**
      * 删除用户
      * @param id
      */
-    void removeUser(Long id);
+    Boolean removeUser(Long id);
 }
