@@ -2,6 +2,8 @@ package com.yxm.springboot.web;
 
 import com.yxm.springboot.domain.User;
 import com.yxm.springboot.service.UserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -26,6 +28,8 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    private Log log = LogFactory.getLog(getClass());
+
     @Autowired
     private UserService userService;
 
@@ -36,6 +40,7 @@ public class UserController {
      */
     @GetMapping("/")
     public List<User> listUsers() {
+        log.info("查询所有用户信息");
         List<User> users = userService.listUsers();
         return users;
     }
