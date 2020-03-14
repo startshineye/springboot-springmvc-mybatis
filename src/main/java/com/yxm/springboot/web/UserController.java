@@ -2,7 +2,6 @@ package com.yxm.springboot.web;
 
 import com.yxm.springboot.domain.User;
 import com.yxm.springboot.service.UserService;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -37,7 +36,8 @@ public class UserController {
      */
     @GetMapping("/")
     public List<User> listUsers() {
-        return userService.listUsers();
+        List<User> users = userService.listUsers();
+        return users;
     }
 
     /**
@@ -71,24 +71,26 @@ public class UserController {
 
         //2.业务逻辑
         userService.saveUser(user);
-        return "success";
+        return "{'status': 'success', 'message': '新增用户ID为" + user.getId() + "'}";
     }
     /**
      * 修改用户
      * @param user
      */
     @PutMapping("/")
-    public void updateUser(@RequestBody User user) {
+    public String updateUser(@RequestBody User user) {
         System.out.println(user);
         userService.updateUser(user);
+        return "success";
     }
 
     /**
      * 删除用户
      * @param id
      */
-    @Delete("/{id}")
-    public void removeUser(@PathVariable("id") Long id) {
+    @DeleteMapping("/{id}")
+    public String removeUser(@PathVariable("id") Long id) {
         userService.removeUser(id);
+        return "success";
     }
 }
